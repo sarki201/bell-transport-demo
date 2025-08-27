@@ -3,6 +3,7 @@ import HomeView from "../views/HomeView.vue";
 import BookingView from "@/views/BookingView.vue";
 import FiveSeatsView from "@/views/FiveSeatsView.vue";
 import SixSeatsView from "@/views/SixSeatsView.vue";
+import NotFoundView from "@/views/NotFoundView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -28,12 +29,9 @@ const router = createRouter({
       component: SixSeatsView,
     },
     {
-      path: "/about",
-      name: "about",
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import("../views/AboutView.vue"),
+      path: "/:catchAll(.*)",
+      name: "not-found",
+      component: NotFoundView,
     },
   ],
 });
