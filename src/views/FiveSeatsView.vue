@@ -1,21 +1,6 @@
 <script setup lang="ts">
 import FiveSeaterComp from "@/components/FiveSeaterComp.vue";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper.vue";
-import router from "@/router";
-import { useBookingStore } from "@/stores/booking";
-import { onMounted } from "vue";
-
-const bookingStore = useBookingStore();
-
-onMounted(() => {
-  if (
-    !bookingStore.state.departure ||
-    !bookingStore.state.destination ||
-    !bookingStore.state.departureDate
-  ) {
-    router.push("/");
-  }
-});
 </script>
 <template>
   <header

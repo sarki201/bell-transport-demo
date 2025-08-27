@@ -175,9 +175,12 @@ const handleSubmit = () => {
       <div class="">
         <p class="text-[#0d1a4f] text-sm">FROM</p>
         <p class="font-semibold">
-          {{ destinationList.find((des) => des.code === bookingStore.state.departure)?.name }},
+          {{
+            destinationList.find((des) => des.code === bookingStore.state.departure)?.name ||
+            "Maiduguri"
+          }},
           <span class="text-xs text-gray-600 text-nowrap">{{
-            destinationList.find((des) => des.code === bookingStore.state.departure)?.sub
+            destinationList.find((des) => des.code === bookingStore.state.departure)?.sub || "BOGIS"
           }}</span>
         </p>
       </div>
@@ -187,9 +190,13 @@ const handleSubmit = () => {
       <div class="w-30">
         <p class="text-[#0d1a4f] text-sm">TO</p>
         <p class="font-semibold">
-          {{ destinationList.find((des) => des.code === bookingStore.state.destination)?.name }}
+          {{
+            destinationList.find((des) => des.code === bookingStore.state.destination)?.name ||
+            "Abuja"
+          }}
           <span class="text-xs text-gray-600 text-nowrap">{{
-            destinationList.find((des) => des.code === bookingStore.state.destination)?.sub
+            destinationList.find((des) => des.code === bookingStore.state.destination)?.sub ||
+            "Kaduna route"
           }}</span>
         </p>
       </div>

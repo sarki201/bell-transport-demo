@@ -7,7 +7,7 @@ import TripLoaderComp from "@/components/TripLoaderComp.vue";
 import { onMounted } from "vue";
 import { ref } from "vue";
 import { useBookingStore } from "@/stores/booking";
-import router from "@/router";
+import HeadingComp from "@/components/HeadingComp.vue";
 
 const bookingStore = useBookingStore();
 
@@ -63,16 +63,6 @@ const setTripList = async () => {
   }, 1000);
 };
 
-onMounted(() => {
-  if (
-    !bookingStore.state.departure ||
-    !bookingStore.state.destination ||
-    !bookingStore.state.departureDate
-  ) {
-    router.push("/");
-  }
-});
-
 onMounted(async () => {
   setTripList();
 });
@@ -95,6 +85,7 @@ onMounted(async () => {
     <BookingComp :isHome="false" />
     <section class="lg:-mt-20 mb-30">
       <MaxWidthWrapper className="">
+        <HeadingComp heading="Search results" className="mx-4" :isCenter="true" />
         <TripLoaderComp
           v-if="
             rides === null ||
@@ -127,10 +118,12 @@ onMounted(async () => {
               <p class="text-[#0d1a4f] text-sm">FROM</p>
               <p class="font-semibold">
                 {{
-                  destinationList.find((des) => des.code === bookingStore.state.departure)?.name
+                  destinationList.find((des) => des.code === bookingStore.state.departure)?.name ||
+                  "Maiduguri"
                 }},
                 <span class="text-xs text-gray-600 text-nowrap">{{
-                  destinationList.find((des) => des.code === bookingStore.state.departure)?.sub
+                  destinationList.find((des) => des.code === bookingStore.state.departure)?.sub ||
+                  "BOGIS"
                 }}</span>
               </p>
             </div>
@@ -141,10 +134,12 @@ onMounted(async () => {
               <p class="text-[#0d1a4f] text-sm">TO</p>
               <p class="font-semibold">
                 {{
-                  destinationList.find((des) => des.code === bookingStore.state.destination)?.name
+                  destinationList.find((des) => des.code === bookingStore.state.destination)
+                    ?.name || "Abuja"
                 }}
                 <span class="text-xs text-gray-600 text-nowrap">{{
-                  destinationList.find((des) => des.code === bookingStore.state.destination)?.sub
+                  destinationList.find((des) => des.code === bookingStore.state.destination)?.sub ||
+                  "Kaduna route"
                 }}</span>
               </p>
             </div>
@@ -155,7 +150,7 @@ onMounted(async () => {
             <div class="md:text-center">
               <p class="text-[#0d1a4f] text-sm">DATE</p>
               <p class="font-semibold">
-                {{ String(bookingStore.state.departureDate).substring(4, 16) }}
+                {{ String(bookingStore.state.departureDate).substring(4, 16) || "30 Aug 2025" }}
               </p>
             </div>
             <div class="w-30 md:w-auto md:text-center">
