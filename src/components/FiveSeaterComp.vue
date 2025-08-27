@@ -223,7 +223,7 @@ const handleSubmit = () => {
               required
               class="w-full border border-solid border-gray-400 outline-none px-4 py-2 rounded-md"
               type="text"
-              placeholder="e.g 08062452453"
+              placeholder="e.g 08062094639"
             />
           </div>
           <div>
@@ -259,7 +259,7 @@ const handleSubmit = () => {
               required
               class="w-full border border-solid border-gray-400 outline-none px-4 py-2 rounded-md"
               type="text"
-              placeholder="e.g 08062452453"
+              placeholder="e.g 08062094639"
             />
           </div>
         </div>

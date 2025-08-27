@@ -3,7 +3,7 @@ const shimmer = "animate-pulse bg-gray-300";
 </script>
 <template>
   <div
-    class="bg-[#eee] flex flex-col md:flex-row justify-between items-start mb-6 md:items-center gap-3 p-4 sm:p-15 md:p-4 rounded-lg border border-solid border-gray-300 mx-auto max-w-250"
+    class="bg-[#f6f6f6] flex flex-col md:flex-row justify-between items-start mb-6 md:items-center gap-3 p-4 sm:p-15 md:p-4 rounded-lg border border-solid border-gray-300 mx-auto max-w-250"
   >
     <div class="flex items-center justify-between md:justify-start gap-4 w-full md:w-auto">
       <div
@@ -47,7 +47,7 @@ const shimmer = "animate-pulse bg-gray-300";
     </div>
   </div>
   <div
-    class="bg-[#eee] flex flex-col md:flex-row justify-between items-start mb-6 md:items-center gap-3 p-4 sm:p-15 md:p-4 rounded-lg border border-solid border-gray-300 mx-auto max-w-250"
+    class="bg-[#f6f6f6] flex flex-col md:flex-row justify-between items-start mb-6 md:items-center gap-3 p-4 sm:p-15 md:p-4 rounded-lg border border-solid border-gray-300 mx-auto max-w-250"
   >
     <div class="flex items-center justify-between md:justify-start gap-4 w-full md:w-auto">
       <div

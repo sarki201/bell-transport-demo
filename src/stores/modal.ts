@@ -35,30 +35,21 @@ export const useModalStore = defineStore("modal", () => {
   }
   function openDeparture() {
     state.value.modals.isDepartureOpen = true;
-    state.value.isOverlayActive = true;
-    state.value.isOverlayLight = true;
   }
   function closeDeparture() {
     state.value.modals.isDepartureOpen = false;
-    state.value.isOverlayActive = false;
   }
   function openDestination() {
     state.value.modals.isDestinationOpen = true;
-    state.value.isOverlayActive = true;
-    state.value.isOverlayLight = true;
   }
   function closeDestination() {
     state.value.modals.isDestinationOpen = false;
-    state.value.isOverlayActive = false;
   }
   function openTrip() {
     state.value.modals.isTripOpen = true;
-    state.value.isOverlayActive = true;
-    state.value.isOverlayLight = true;
   }
   function closeTrip() {
     state.value.modals.isTripOpen = false;
-    state.value.isOverlayActive = false;
   }
   function closeAllModals() {
     Object.keys(state.value.modals).forEach((key) => {

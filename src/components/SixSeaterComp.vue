@@ -75,6 +75,7 @@ const handleSubmit = () => {
 
 <template>
   <section class="lg:col-span-2 flex flex-col items-center w-full lg:w-auto">
+    <h4 class="mb-6 font-bold text-[#0d1a4f] text-lg text-left w-full">Select seat(s)</h4>
     <article class="flex items-center gap-6 mb-10">
       <div class="flex items-center gap-2">
         <div class="w-4 h-4 bg-white rounded-full border border-solid border-gray-300"></div>
@@ -82,7 +83,7 @@ const handleSubmit = () => {
       </div>
       <div class="flex items-center gap-2">
         <div class="w-4 h-4 bg-gray-500 rounded-full border border-solid border-gray-300"></div>
-        Booked
+        Sold
       </div>
       <div class="flex items-center gap-2">
         <div class="w-4 h-4 bg-green-500 rounded-full border border-solid border-gray-300"></div>
@@ -237,7 +238,7 @@ const handleSubmit = () => {
               required
               class="w-full border border-solid border-gray-400 outline-none px-4 py-2 rounded-md"
               type="text"
-              placeholder="e.g 08062452453"
+              placeholder="e.g 08062094639"
             />
           </div>
           <div>
@@ -273,7 +274,7 @@ const handleSubmit = () => {
               required
               class="w-full border border-solid border-gray-400 outline-none px-4 py-2 rounded-md"
               type="text"
-              placeholder="e.g 08062452453"
+              placeholder="e.g 08062094639"
             />
           </div>
         </div>

@@ -11,9 +11,20 @@ import VueDatePicker from "@vuepic/vue-datepicker";
 import MaxWidthWrapper from "./MaxWidthWrapper.vue";
 import { useBookingStore } from "@/stores/booking";
 import router from "@/router";
+import { onClickOutside } from "@vueuse/core";
+import { useTemplateRef } from "vue";
 
 const store = useModalStore();
 const bookingStore = useBookingStore();
+
+const dep = useTemplateRef<HTMLElement>("dep");
+const des = useTemplateRef<HTMLElement>("des");
+const trp = useTemplateRef<HTMLElement>("trp");
+
+onClickOutside(dep, (_) => store.closeDeparture());
+onClickOutside(des, (_) => store.closeDestination());
+onClickOutside(trp, (_) => store.closeTrip());
+
 type Destination = {
   name: string;
   sub: string;
@@ -99,9 +110,9 @@ const handleSearch = () => {
   >
     <MaxWidthWrapper className="flex items-end justify-center sm:pb-10 relative sm:static">
       <div
-        class="w-[95%] sm:w-full absolute -bottom-40 sm:static mx-auto sm:mx-0 bg-white/95 backdrop-f rounded-lg p-4 flex flex-col sm:flex-row items-stretch gap-x-2 gap-y-4 border border-solid border-gray-300 flex-wrap lg:flex-nowrap"
+        class="w-[95%] z-[8] sm:w-full absolute -bottom-40 sm:static mx-auto sm:mx-0 bg-white/80 backdrop-blur-lg rounded-lg p-4 flex flex-col sm:flex-row items-stretch gap-x-2 gap-y-4 border border-solid border-gray-300 flex-wrap lg:flex-nowrap"
       >
-        <div class="relative w-full sm:w-[calc(50%-1rem)] lg:flex-3">
+        <div ref="dep" class="relative w-full sm:w-[calc(50%-1rem)] lg:flex-3">
           <div
             @click="store.openDeparture"
             :class="`border border-solid border-blue-800 h-full ${
@@ -113,7 +124,8 @@ const handleSearch = () => {
           </div>
 
           <div
-            :class="`absolute w-full min-w-40 bg-white bottom-0 py-4 border border-solid border-gray-300 transition-all duration-300 translate-y-full shadow-xl rounded-md overflow-hidden z-30 ${
+            on
+            :class="`absolute w-full min-w-40 bg-white bottom-0 py-4 border border-solid border-gray-300 transition-all duration-150 translate-y-full shadow-xl rounded-md overflow-hidden z-30 ${
               store.state.modals.isDepartureOpen ? '' : 'pointer-events-none opacity-0'
             }`"
           >
@@ -132,7 +144,7 @@ const handleSearch = () => {
           </div>
         </div>
         <i class="pi pi-arrow-right-arrow-left text-blue-800 flex-1 lg:flex-0 self-center"></i>
-        <div class="relative w-full sm:w-[calc(50%-1rem)] lg:flex-3">
+        <div ref="des" class="relative w-full sm:w-[calc(50%-1rem)] lg:flex-3">
           <div
             @click="store.openDestination"
             :class="`border border-solid border-blue-800 h-full ${
@@ -144,7 +156,7 @@ const handleSearch = () => {
           </div>
 
           <div
-            :class="`absolute w-full min-w-40 bg-white bottom-0 py-2 border border-solid border-gray-300 transition-all duration-300 translate-y-full shadow-xl rounded-md overflow-hidden z-30 ${
+            :class="`absolute w-full min-w-40 bg-white bottom-0 py-2 border border-solid border-gray-300 transition-all duration-150 translate-y-full shadow-xl rounded-md overflow-hidden z-30 ${
               store.state.modals.isDestinationOpen ? '' : 'pointer-events-none opacity-0'
             }`"
           >
@@ -188,18 +200,16 @@ const handleSearch = () => {
             ></VueDatePicker>
           </div>
         </div>
-        <div :class="`relative w-full ${isRoundTrip ? 'md:flex-3' : 'md:flex-2'}`">
+        <div ref="trp" :class="`relative w-full ${isRoundTrip ? 'md:flex-3' : 'md:flex-2'}`">
           <div
             @click="store.openTrip"
             class="border border-solid border-blue-800 rounded-lg px-2 py-4 cursor-pointer h-full"
           >
             {{ tripType }}
           </div>
-          <!-- <div
-              class="absolute w-full min-w-40 bg-white bottom-0 translate-y-full shadow-xl rounded-md overflow-hidden z-40"
-            > -->
+
           <div
-            :class="`absolute w-full min-w-40 bg-white bottom-0 translate-y-full py-2 border border-solid border-gray-300 transition-all duration-300 shadow-xl rounded-md overflow-hidden z-30 ${
+            :class="`absolute w-full min-w-40 bg-white bottom-0 translate-y-full py-2 border border-solid border-gray-300 transition-all duration-150 shadow-xl rounded-md overflow-hidden z-30 ${
               store.state.modals.isTripOpen ? '' : 'pointer-events-none opacity-0'
             }`"
           >

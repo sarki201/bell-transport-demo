@@ -11,14 +11,6 @@ import router from "@/router";
 
 const bookingStore = useBookingStore();
 
-if (
-  !bookingStore.state.departure ||
-  !bookingStore.state.destination ||
-  !bookingStore.state.departureDate
-) {
-  router.push("/");
-}
-
 type Ride = {
   name: string;
   class: string;
@@ -68,8 +60,18 @@ const setTripList = async () => {
 
   setTimeout(() => {
     rides.value = rideList;
-  }, 5000);
+  }, 1000);
 };
+
+onMounted(() => {
+  if (
+    !bookingStore.state.departure ||
+    !bookingStore.state.destination ||
+    !bookingStore.state.departureDate
+  ) {
+    router.push("/");
+  }
+});
 
 onMounted(async () => {
   setTripList();
@@ -105,7 +107,7 @@ onMounted(async () => {
           v-else
           v-for="(ride, index) in rides"
           :key="index"
-          class="bg-[#eee] drop-shadow-lg flex flex-col md:flex-row justify-between items-start mb-6 md:items-center gap-3 p-4 sm:p-15 md:p-4 rounded-lg border border-solid border-gray-300 mx-auto max-w-250"
+          class="bg-[#f6f6f6] drop-shadow-lg flex flex-col md:flex-row justify-between items-start mb-6 md:items-center gap-3 p-4 sm:p-15 md:p-4 rounded-lg border border-solid border-gray-300 mx-auto max-w-250"
         >
           <div class="flex items-center justify-between md:justify-start gap-4 w-full md:w-auto">
             <img
